@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ImpasseWord - Secure Password Generator</title>
+    <meta name="description" content="Generate strong, secure passwords instantly with ImpasseWord. No data stored, completely client-side.">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header Section - Branding -->
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">ImpasseWord</h1>
+            <p class="tagline">Generate Strong Passwords Instantly</p>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="main">
+        <div class="container">
+            <!-- Password Display Section -->
+            <section class="password-display">
+                <div class="password-output-container">
+                    <input type="text" id="passwordOutput" readonly class="password-output">
+                    <button id="copyButton" class="copy-btn" title="Copy to clipboard">
+                        📋
+                    </button>
+                </div>
+                <div id="copyFeedback" class="copy-feedback"></div>
+            </section>
+
+            <!-- Configuration Section -->
+            <section class="configuration">
+                <!-- Password Length Control -->
+                <div class="control-group">
+                    <label for="passwordLength" class="control-label">
+                        Password Length: <span id="lengthValue">12</span>
+                    </label>
+                    <input type="range" id="passwordLength" min="8" max="32" value="12" class="slider">
+                </div>
+
+                <!-- Character Set Options -->
+                <div class="control-group">
+                    <legend class="control-label">Include:</legend>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="uppercase" checked>
+                            Uppercase Letters (A-Z)
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="lowercase" checked>
+                            Lowercase Letters (a-z)
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="numbers" checked>
+                            Numbers (0-9)
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="symbols" checked>
+                            Symbols (!@#$%^&*)
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Generate Button -->
+                <button id="generateButton" class="generate-btn">
+                    Generate Secure Password
+                </button>
+            </section>
+
+            <!-- Security Features Info -->
+            <section class="security-info">
+                <h2>🔒 Security Features</h2>
+                <ul>
+                    <li>Passwords generated locally in your browser</li>
+                    <li>No data sent to servers</li>
+                    <li>No passwords stored or logged</li>
+                    <li>HTTPS encrypted connection</li>
+                </ul>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 ImpasseWord. Built with security in mind.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
