@@ -36,6 +36,25 @@ input[type="checkbox"],
 input[type="range"] {
     cursor: pointer;
 }
+.password-output, .copy-btn, .generate-btn, .checkbox-label {
+    transition: all 0.3s ease;
+}
+
+.configuration, .password-display, .security-info {
+    transition: transform 0.2s ease;
+}
+
+.generate-btn:active {
+    transform: translateY(0) scale(0.98);
+}
+
+.copy-btn:active {
+    transform: scale(0.92);
+}
+.copy-feedback.show {
+    display: block;
+    animation: fadeInOut 2s ease-in-out;
+}
 
 .container {
     width: 100%;
@@ -103,6 +122,7 @@ input[type="range"] {
     text-align: center;
     font-weight: 600;
     color: var(--text-primary);
+
 }
 
 .password-output:focus {
@@ -161,6 +181,21 @@ input[type="range"] {
 /* ===== Copy Button Icon ===== */
 .copy-btn::before {
     content: "📋";
+}
+/* Enhanced button states */
+.generate-btn:active {
+    transform: translateY(0) scale(0.98);
+}
+
+.copy-btn:active {
+    transform: scale(0.92);
+}
+
+/* Subtle hover lift for cards */
+.configuration:hover, 
+.password-display:hover, 
+.security-info:hover {
+    transform: translateY(-2px);
 }
 
 .slider {
@@ -319,5 +354,21 @@ input[type="range"] {
 @media (prefers-contrast: high) {
     .generate-btn {
         border: 2px solid currentColor;
+    }
+}
+@keyframes fadeInOut {
+    0% { opacity: 0; transform: translateY(-10px); }
+    20% { opacity: 1; transform: translateY(0); }
+    80% { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(-10px); }
+}
+
+@media (max-width: 480px) {
+    button, input[type="checkbox"] {
+        min-height: 44px;
+    }
+    
+    .checkbox-label {
+        padding: 0.75rem 0.5rem;
     }
 }
