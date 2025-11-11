@@ -17,19 +17,8 @@
     </header>
 
     <!-- Main Content Area -->
-    <main class="main">
+    <main id="main-content" class="main" role="main" aria-label="Password Generator">
         <div class="container">
-            <!-- Password Display Section -->
-            <section class="password-display">
-                <div class="password-output-container">
-                    <input type="text" id="passwordOutput" readonly class="password-output">
-                    <button id="copyButton" class="copy-btn" title="Copy to clipboard">
-                        📋
-                    </button>
-                </div>
-                <div id="copyFeedback" class="copy-feedback"></div>
-            </section>
-
             <!-- Configuration Section -->
             <section class="configuration">
                 <!-- Password Length Control -->
@@ -67,6 +56,16 @@
                 <button id="generateButton" class="generate-btn">
                     Generate Secure Password
                 </button>
+            </section>
+            <!-- Password Display Section -->
+            <section class="password-display">
+                <div class="password-output-container">
+                    <input type="text" id="passwordOutput" readonly class="password-output" aria-label="Generated password" aria-live="polite">
+                    <button id="copyButton" class="copy-btn" aria-label="Copy password to clipboard" title="Copy to clipboard"> 
+                        <span class="sr-only">Copy to clipboard</span>
+                    </button>
+                </div>
+                <div id="copyFeedback" class="copy-feedback"></div>
             </section>
 
             <!-- Security Features Info -->

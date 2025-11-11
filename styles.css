@@ -30,12 +30,23 @@ body {
     display: flex;
     flex-direction: column;
 }
+/* Ensure all interactive elements have proper cursor */
+button, 
+input[type="checkbox"],
+input[type="range"] {
+    cursor: pointer;
+}
 
 .container {
     width: 100%;
     max-width: 600px;
     margin: 0 auto;
     padding: 0 20px;
+}
+/* Loading state for generate button */
+.generate-btn.loading {
+    opacity: 0.7;
+    cursor: wait;
 }
 
 /* ===== Header Styles ===== */
@@ -95,8 +106,9 @@ body {
 }
 
 .password-output:focus {
-    outline: none;
     border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.3);
+    outline: 2px solid transparent;
 }
 
 .copy-btn {
@@ -145,6 +157,10 @@ body {
     font-weight: 600;
     color: var(--text-primary);
     margin-bottom: 0.5rem;
+}
+/* ===== Copy Button Icon ===== */
+.copy-btn::before {
+    content: "📋";
 }
 
 .slider {
@@ -298,5 +314,10 @@ body {
     
     .checkbox-group {
         gap: 0.5rem;
+    }
+}
+@media (prefers-contrast: high) {
+    .generate-btn {
+        border: 2px solid currentColor;
     }
 }
