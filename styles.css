@@ -1,4 +1,4 @@
-/* ===== CSS Variables for Consistent Design ===== */
+/* ===== CSS VARIABLES ===== */
 :root {
     --primary-color: #2563eb;
     --primary-dark: #1d4ed8;
@@ -14,7 +14,7 @@
     --border-radius: 8px;
 }
 
-/* ===== CSS Reset & Base Styles ===== */
+/* ===== BASE STYLES ===== */
 * {
     margin: 0;
     padding: 0;
@@ -30,30 +30,12 @@ body {
     display: flex;
     flex-direction: column;
 }
-/* Ensure all interactive elements have proper cursor */
+
+/* Interactive elements cursor */
 button, 
 input[type="checkbox"],
 input[type="range"] {
     cursor: pointer;
-}
-.password-output, .copy-btn, .generate-btn, .checkbox-label {
-    transition: all 0.3s ease;
-}
-
-.configuration, .password-display, .security-info {
-    transition: transform 0.2s ease;
-}
-
-.generate-btn:active {
-    transform: translateY(0) scale(0.98);
-}
-
-.copy-btn:active {
-    transform: scale(0.92);
-}
-.copy-feedback.show {
-    display: block;
-    animation: fadeInOut 2s ease-in-out;
 }
 
 .container {
@@ -62,13 +44,8 @@ input[type="range"] {
     margin: 0 auto;
     padding: 0 20px;
 }
-/* Loading state for generate button */
-.generate-btn.loading {
-    opacity: 0.7;
-    cursor: wait;
-}
 
-/* ===== Header Styles ===== */
+/* ===== HEADER STYLES ===== */
 .header {
     background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
     color: white;
@@ -89,76 +66,13 @@ input[type="range"] {
     font-weight: 300;
 }
 
-/* ===== Main Content Area ===== */
+/* ===== MAIN CONTENT AREA ===== */
 .main {
     flex: 1;
     padding: 2rem 0;
 }
 
-/* ===== Password Display Section ===== */
-.password-display {
-    background: var(--surface-color);
-    border-radius: var(--border-radius);
-    padding: 1.5rem;
-    margin-bottom: 2rem;
-    box-shadow: var(--shadow);
-    border: 1px solid var(--border-color);
-}
-
-.password-output-container {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-}
-
-.password-output {
-    flex: 1;
-    padding: 12px 16px;
-    font-size: 1.1rem;
-    font-family: 'Courier New', monospace;
-    border: 2px solid var(--border-color);
-    border-radius: var(--border-radius);
-    background-color: #f8fafc;
-    text-align: center;
-    font-weight: 600;
-    color: var(--text-primary);
-
-}
-
-.password-output:focus {
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.3);
-    outline: 2px solid transparent;
-}
-
-.copy-btn {
-    padding: 12px 16px;
-    background: var(--primary-color);
-    color: white;
-    border: none;
-    border-radius: var(--border-radius);
-    cursor: pointer;
-    font-size: 1.2rem;
-    transition: background-color 0.2s ease;
-}
-
-.copy-btn:hover {
-    background: var(--primary-dark);
-}
-
-.copy-btn:active {
-    transform: scale(0.98);
-}
-
-.copy-feedback {
-    margin-top: 0.5rem;
-    font-size: 0.9rem;
-    text-align: center;
-    font-weight: 500;
-    display: none; /* Hidden by default, shown via JavaScript */
-}
-
-/* ===== Configuration Section ===== */
+/* ===== CONFIGURATION SECTION ===== */
 .configuration {
     background: var(--surface-color);
     border-radius: var(--border-radius);
@@ -178,26 +92,8 @@ input[type="range"] {
     color: var(--text-primary);
     margin-bottom: 0.5rem;
 }
-/* ===== Copy Button Icon ===== */
-.copy-btn::before {
-    content: "📋";
-}
-/* Enhanced button states */
-.generate-btn:active {
-    transform: translateY(0) scale(0.98);
-}
 
-.copy-btn:active {
-    transform: scale(0.92);
-}
-
-/* Subtle hover lift for cards */
-.configuration:hover, 
-.password-display:hover, 
-.security-info:hover {
-    transform: translateY(-2px);
-}
-
+/* Password length slider */
 .slider {
     width: 100%;
     height: 6px;
@@ -221,6 +117,7 @@ input[type="range"] {
     cursor: pointer;
 }
 
+/* Character set checkboxes */
 .checkbox-group {
     display: flex;
     flex-direction: column;
@@ -247,6 +144,7 @@ input[type="range"] {
     accent-color: var(--primary-color);
 }
 
+/* Generate button */
 .generate-btn {
     width: 100%;
     padding: 1rem;
@@ -265,11 +163,75 @@ input[type="range"] {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
-.generate-btn:active {
-    transform: translateY(0);
+.generate-btn.loading {
+    opacity: 0.7;
+    cursor: wait;
 }
 
-/* ===== Security Info Section ===== */
+/* ===== PASSWORD DISPLAY SECTION ===== */
+.password-display {
+    background: var(--surface-color);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border-color);
+}
+
+.password-output-container {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.password-output {
+    flex: 1;
+    padding: 12px 16px;
+    font-size: 1.1rem;
+    font-family: 'Courier New', monospace;
+    border: 2px solid var(--border-color);
+    border-radius: var(--border-radius);
+    background-color: #f8fafc;
+    text-align: center;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.password-output:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.3);
+    outline: 2px solid transparent;
+}
+
+/* Copy button */
+.copy-btn {
+    padding: 12px 16px;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: background-color 0.2s ease;
+}
+
+.copy-btn::before {
+    content: "📋";
+}
+
+.copy-btn:hover {
+    background: var(--primary-dark);
+}
+
+.copy-feedback {
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    text-align: center;
+    font-weight: 500;
+    display: none;
+}
+
+/* ===== SECURITY INFO SECTION ===== */
 .security-info {
     background: var(--surface-color);
     border-radius: var(--border-radius);
@@ -303,7 +265,7 @@ input[type="range"] {
     font-weight: bold;
 }
 
-/* ===== Footer Styles ===== */
+/* ===== FOOTER STYLES ===== */
 .footer {
     background: var(--surface-color);
     color: var(--text-secondary);
@@ -313,7 +275,42 @@ input[type="range"] {
     margin-top: auto;
 }
 
-/* ===== Responsive Design ===== */
+/* ===== INTERACTIONS & ANIMATIONS ===== */
+.password-output, .copy-btn, .generate-btn, .checkbox-label {
+    transition: all 0.3s ease;
+}
+
+.configuration, .password-display, .security-info {
+    transition: transform 0.2s ease;
+}
+
+.generate-btn:active {
+    transform: translateY(0) scale(0.98);
+}
+
+.copy-btn:active {
+    transform: scale(0.92);
+}
+
+.configuration:hover, 
+.password-display:hover, 
+.security-info:hover {
+    transform: translateY(-2px);
+}
+
+.copy-feedback.show {
+    display: block;
+    animation: fadeInOut 2s ease-in-out;
+}
+
+@keyframes fadeInOut {
+    0% { opacity: 0; transform: translateY(-10px); }
+    20% { opacity: 1; transform: translateY(0); }
+    80% { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(-10px); }
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
 @media (max-width: 768px) {
     .container {
         padding: 0 15px;
@@ -350,25 +347,19 @@ input[type="range"] {
     .checkbox-group {
         gap: 0.5rem;
     }
-}
-@media (prefers-contrast: high) {
-    .generate-btn {
-        border: 2px solid currentColor;
-    }
-}
-@keyframes fadeInOut {
-    0% { opacity: 0; transform: translateY(-10px); }
-    20% { opacity: 1; transform: translateY(0); }
-    80% { opacity: 1; transform: translateY(0); }
-    100% { opacity: 0; transform: translateY(-10px); }
-}
-
-@media (max-width: 480px) {
+    
     button, input[type="checkbox"] {
         min-height: 44px;
     }
     
     .checkbox-label {
         padding: 0.75rem 0.5rem;
+    }
+}
+
+/* ===== ACCESSIBILITY ENHANCEMENTS ===== */
+@media (prefers-contrast: high) {
+    .generate-btn {
+        border: 2px solid currentColor;
     }
 }
