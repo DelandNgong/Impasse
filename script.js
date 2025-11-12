@@ -78,6 +78,59 @@ function autoGenerateOnChange() {
         generatePassword();
     }
 }
+// ===== CLIPBOARD COPY FUNCTIONALITY =====
+
+// Get DOM elements for copy functionality
+const copyButton = document.getElementById('copyButton');
+const copyFeedback = document.getElementById('copyFeedback');
+
+// Copy to clipboard function
+function copyToClipboard() {
+    const password = passwordOutput.value;
+    
+    // Check if there's a valid password to copy
+    if (!password || password.includes('Select character types') || password.includes('Please select')) {
+        showCopyFeedback('❌ No password to copy', 'error');
+        return;
+    }
+    
+    // Use modern clipboard API
+    navigator.clipboard.writeText(password).then(() => {
+        showCopyFeedback('✓ Copied to clipboard!', 'success');
+    }).catch(() => {
+        // Fallback for older browsers
+        fallbackCopyToClipboard(password);
+    });
+}
+
+// Fallback copy method for older browsers
+function fallbackCopyToClipboard(text) {
+    const textArea = document.createElement('textarea');
+    textArea.value = text;
+    document.body.appendChild(textArea);
+    textArea.select();
+    
+    try {
+        document.execCommand('copy');
+        showCopyFeedback('✓ Copied to clipboard!', 'success');
+    } catch (err) {
+        showCopyFeedback('❌ Copy failed', 'error');
+    }
+    
+    document.body.removeChild(textArea);
+}
+
+// Show copy feedback message
+function showCopyFeedback(message, type) {
+    copyFeedback.textContent = message;
+    copyFeedback.className = 'copy-feedback show';
+    copyFeedback.style.color = type === 'success' ? 'var(--success-color)' : 'var(--error-color)';
+    
+    // Hide feedback after 2 seconds
+    setTimeout(() => {
+        copyFeedback.className = 'copy-feedback';
+    }, 2000);
+}
 // ===== ENHANCED EVENT LISTENERS =====
 
 // Update character set checkboxes to auto-generate
@@ -99,6 +152,8 @@ generateButton.addEventListener('click', function() {
         generatePassword();
     }
 });
+// Copy button click event
+copyButton.addEventListener('click', copyToClipboard);
 
 /// ===== INITIALIZATION =====
 // Initialize on page load
