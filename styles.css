@@ -195,6 +195,9 @@ input[type="range"] {
     text-align: center;
     font-weight: 600;
     color: var(--text-primary);
+    /* ADDED: Horizontal scrolling for long passwords */
+    overflow-x: auto;
+    white-space: nowrap;
 }
 
 .password-output:focus {
