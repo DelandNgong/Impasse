@@ -181,6 +181,33 @@ function generatePassword() {
         
     }, 300); // Small delay for better UX
 }
+// Enhanced copy to clipboard function
+function copyToClipboard() {
+    const password = passwordOutput.value;
+    
+    // Check if there's a valid password to copy
+    if (!password || password.includes('Select character types') || password.includes('Please select')) {
+        showCopyFeedback('❌ No password to copy', 'error');
+        return;
+    }
+    
+    // Visual feedback
+    copyButton.classList.add('copied');
+    
+    // Use modern clipboard API
+    navigator.clipboard.writeText(password).then(() => {
+        showCopyFeedback('✓ Copied!', 'success');
+        
+        // Reset copy button after 2 seconds
+        setTimeout(() => {
+            copyButton.classList.remove('copied');
+        }, 2000);
+        
+    }).catch(() => {
+        // Fallback for older browsers
+        fallbackCopyToClipboard(password);
+    });
+}
 // ===== ENHANCED EVENT LISTENERS =====
 
 // Update character set checkboxes to auto-generate

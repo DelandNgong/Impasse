@@ -312,7 +312,15 @@ input[type="range"] {
     80% { opacity: 1; transform: translateY(0); }
     100% { opacity: 0; transform: translateY(-10px); }
 }
+/* Enhanced copy button states */
+.copy-btn.copied {
+    background: var(--success-color);
+    transform: scale(0.95);
+}
 
+.copy-btn.copied::before {
+    content: "✓";
+}
 /* ===== RESPONSIVE DESIGN ===== */
 @media (max-width: 768px) {
     .container {
