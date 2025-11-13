@@ -131,6 +131,56 @@ function showCopyFeedback(message, type) {
         copyFeedback.className = 'copy-feedback';
     }, 2000);
 }
+// ===== LOADING STATES & FEEDBACK =====
+
+// Enhanced generate password function with loading state
+function generatePassword() {
+    // Show loading state
+    generateButton.classList.add('loading');
+    generateButton.disabled = true;
+    
+    // Small delay to show loading state (simulates processing)
+    setTimeout(() => {
+        // Get selected character types
+        const includeUppercase = document.getElementById('uppercase').checked;
+        const includeLowercase = document.getElementById('lowercase').checked;
+        const includeNumbers = document.getElementById('numbers').checked;
+        const includeSymbols = document.getElementById('symbols').checked;
+        
+        // Build available characters string
+        let availableChars = '';
+        if (includeUppercase) availableChars += characterSets.uppercase;
+        if (includeLowercase) availableChars += characterSets.lowercase;
+        if (includeNumbers) availableChars += characterSets.numbers;
+        if (includeSymbols) availableChars += characterSets.symbols;
+        
+        // Check if at least one character type is selected
+        if (availableChars.length === 0) {
+            passwordOutput.value = 'Select character types above';
+            generateButton.classList.remove('loading');
+            generateButton.disabled = false;
+            return;
+        }
+        
+        // Get password length
+        const length = parseInt(passwordLength.value);
+        
+        // Generate password
+        let password = '';
+        for (let i = 0; i < length; i++) {
+            const randomIndex = Math.floor(Math.random() * availableChars.length);
+            password += availableChars[randomIndex];
+        }
+        
+        // Display the password
+        passwordOutput.value = password;
+        
+        // Remove loading state
+        generateButton.classList.remove('loading');
+        generateButton.disabled = false;
+        
+    }, 300); // Small delay for better UX
+}
 // ===== ENHANCED EVENT LISTENERS =====
 
 // Update character set checkboxes to auto-generate
