@@ -168,6 +168,19 @@ input[type="range"] {
     cursor: wait;
 }
 
+/* Enhanced generate button states */
+.generate-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+.generate-btn:disabled:hover {
+    transform: none !important;
+    box-shadow: none !important;
+}
+
 /* ===== PASSWORD DISPLAY SECTION ===== */
 .password-display {
     background: var(--surface-color);
@@ -195,7 +208,6 @@ input[type="range"] {
     text-align: center;
     font-weight: 600;
     color: var(--text-primary);
-    /* ADDED: Horizontal scrolling for long passwords */
     overflow-x: auto;
     white-space: nowrap;
 }
@@ -224,6 +236,16 @@ input[type="range"] {
 
 .copy-btn:hover {
     background: var(--primary-dark);
+}
+
+/* Enhanced copy button states */
+.copy-btn.copied {
+    background: var(--success-color);
+    transform: scale(0.95);
+}
+
+.copy-btn.copied::before {
+    content: "✓";
 }
 
 .copy-feedback {
@@ -312,15 +334,7 @@ input[type="range"] {
     80% { opacity: 1; transform: translateY(0); }
     100% { opacity: 0; transform: translateY(-10px); }
 }
-/* Enhanced copy button states */
-.copy-btn.copied {
-    background: var(--success-color);
-    transform: scale(0.95);
-}
 
-.copy-btn.copied::before {
-    content: "✓";
-}
 /* ===== RESPONSIVE DESIGN ===== */
 @media (max-width: 768px) {
     .container {
